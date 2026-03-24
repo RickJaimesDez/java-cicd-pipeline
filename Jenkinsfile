@@ -16,6 +16,16 @@ pipeline {
             }
         }
 
+        stage('Analyze Code Quality') {
+            steps {
+                dir('java-app') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=java-app -Dsonar.host.url=http://sonar:9000'
+                    }
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 dir('java-app') {
