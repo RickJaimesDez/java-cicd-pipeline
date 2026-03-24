@@ -10,6 +10,7 @@ pipeline {
         stage('Build JAR') {
             steps {
                 dir('java-app') {
+                    sh 'chmod +x mvnw'
                     sh './mvnw clean package'
                 }
             }
