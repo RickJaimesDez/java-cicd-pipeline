@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/RickJaimesDez/java-cicd-pipeline.git'
-            }
-        }
-
         stage('Build JAR') {
             steps {
                 dir('java-app') {
